@@ -2,7 +2,7 @@
 /* Fundo do App */
 body {
     font-family: 'Arial', sans-serif;
-    background-image: url('/img/background.png');
+    background-image: url('https://pedrovgelli.github.io/BioappProject/img/background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
