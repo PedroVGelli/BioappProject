@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Quiz - Biologia</title>
-    <link rel="stylesheet" href="http://192.168.1.9:3000/css/style.css"> <!-- Caminho absoluto para o CSS -->
+    <link rel="stylesheet" href="https://pedrovgelli.github.io/BioappProject/css/style.css"> <!-- Caminho absoluto para o CSS -->
 </head>
 <body>
     <div class="container">
@@ -13,7 +13,7 @@
         </div>
         <div id="quiz-container"></div>
         <p id="feedback-message" style="color: red; font-weight: bold;"></p>
-        <button onclick="location.href='http://192.168.1.9:3000/index.html'" class="button">Voltar</button> <!-- Caminho absoluto -->
+        <button onclick="location.href='https://pedrovgelli.github.io/BioappProject/index.html'" class="button">Voltar</button> <!-- Caminho absoluto -->
     </div>
 
     <script>
@@ -55,11 +55,11 @@
                 // Insere o ícone de acordo com a resposta correta ou incorreta
                 const iconImg = document.createElement("img");
                 if (index === randomPosition) {
-                    iconImg.src = "http://192.168.1.9:3000/img/correct.png"; // Caminho absoluto
+                    iconImg.src = "https://pedrovgelli.github.io/BioappProject/img/correct.png"; // Caminho absoluto
                     iconImg.style.display = "none";  // Ícone de acerto fica oculto até interação
                     optionElement.dataset.correct = "true";
                 } else {
-                    iconImg.src = "http://192.168.1.9:3000/img/incorrect.png"; // Caminho absoluto
+                    iconImg.src = "https://pedrovgelli.github.io/BioappProject/img/incorrect.png"; // Caminho absoluto
                     iconImg.style.display = "none";  // Ícone de erro fica oculto até interação
                 }
                 optionElement.appendChild(iconImg);
