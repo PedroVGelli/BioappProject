@@ -1,0 +1,130 @@
+/* Fundo do App */
+/* Fundo do App */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('/img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: rgba(54, 51, 229, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Título */
+h1 {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+/* Barra de Progresso */
+.progress-bar {
+    height: 10px;
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    transition: width 0.4s ease;
+}
+
+/* Botões Principais */
+.button, .learn-button, .quiz-option {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    color: white;
+    border: none;
+}
+
+.button {
+    background-color: #4CAF50;
+}
+
+.learn-button {
+    background-color: #FF9800;
+}
+
+.quiz-option {
+    background-color: #03A9F4;
+}
+
+.button:hover, .learn-button:hover, .quiz-option:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Efeito de acerto e erro */
+.quiz-option.correct {
+    background-color: #4CAF50;
+    animation: correctGlow 0.5s ease;
+}
+
+@keyframes correctGlow {
+    0% { box-shadow: 0 0 5px #4CAF50; }
+    100% { box-shadow: 0 0 20px #4CAF50; }
+}
+
+.quiz-option.incorrect {
+    background-color: #F44336;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+/* Ícones de Acerto e Erro */
+.learn-button img, .quiz-option img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+/* Efeito Hover para Feedback */
+.quiz-option.correct:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.quiz-option.incorrect:hover {
+    background-color: #F44336;
+    color: white;}
+/* Botões na Seção Aprenda */

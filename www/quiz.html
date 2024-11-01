@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz - Biologia</title>
+    <link rel="stylesheet" href="http://192.168.1.9:3000/css/style.css"> <!-- Caminho absoluto para o CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz de Genética</h1>
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-bar-fill"></div>
+        </div>
+        <div id="quiz-container"></div>
+        <p id="feedback-message" style="color: red; font-weight: bold;"></p>
+        <button onclick="location.href='http://192.168.1.9:3000/index.html'" class="button">Voltar</button> <!-- Caminho absoluto -->
+    </div>
+
+    <script>
+        const quizContainer = document.getElementById("quiz-container");
+        const feedbackMessage = document.getElementById("feedback-message");
+        const progressFill = document.getElementById("progress-fill");
+
+        const questions = [
+            { question: "Qual mutação leva à Anemia Falciforme?", options: ["Deleção de uma valina", "Substituição de um ácido glutâmico por uma valina", "Inserção de um ácido glutâmico"], answer: 1, explanation: "A Anemia Falciforme ocorre devido à substituição de um ácido glutâmico por uma valina." },
+            { question: "A fenilcetonúria causa:", options: ["Acúmulo de tirosina", "Acúmulo de fenilalanina", "Acúmulo da enzima hidroxilase"], answer: 1, explanation: "A fenilcetonúria leva ao acúmulo de fenilalanina." },
+            { question: "A Fibrose Cística é caracterizada por:", options: ["Excesso de fenilalanina", "Muco espesso nos pulmões", "Deficiência de hemoglobina"], answer: 1, explanation: "A Fibrose Cística produz muco espesso que obstrui órgãos." },
+            { question: "Qual o tipo de mutação ocorre na Síndrome de Down?", options: ["Mutação Genética", "Mutação Cromossômica", "Mutação Pontual"], answer: 1, explanation: "A Síndrome de Down é causada por uma mutação cromossômica." }
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function loadQuestion() {
+            quizContainer.innerHTML = "";
+            feedbackMessage.textContent = "";  // Limpa a mensagem de feedback
+
+            const currentQuestion = questions[currentQuestionIndex];
+            const { question, options, answer, explanation } = currentQuestion;
+
+            const questionElement = document.createElement("div");
+            questionElement.className = "question";
+            questionElement.textContent = question;
+            quizContainer.appendChild(questionElement);
+
+            const shuffledOptions = [...options];
+            const correctAnswer = shuffledOptions.splice(answer, 1)[0];
+            const randomPosition = Math.floor(Math.random() * options.length);
+            shuffledOptions.splice(randomPosition, 0, correctAnswer);
+
+            shuffledOptions.forEach((option, index) => {
+                const optionElement = document.createElement("button");
+                optionElement.className = "quiz-option";
+                optionElement.textContent = option;
+
+                // Insere o ícone de acordo com a resposta correta ou incorreta
+                const iconImg = document.createElement("img");
+                if (index === randomPosition) {
+                    iconImg.src = "http://192.168.1.9:3000/img/correct.png"; // Caminho absoluto
+                    iconImg.style.display = "none";  // Ícone de acerto fica oculto até interação
+                    optionElement.dataset.correct = "true";
+                } else {
+                    iconImg.src = "http://192.168.1.9:3000/img/incorrect.png"; // Caminho absoluto
+                    iconImg.style.display = "none";  // Ícone de erro fica oculto até interação
+                }
+                optionElement.appendChild(iconImg);
+
+                optionElement.onclick = () => {
+                    if (optionElement.dataset.correct === "true") {
+                        optionElement.classList.add("correct");
+                        iconImg.style.display = "inline";  // Mostra ícone de acerto
+                        updateProgress();
+                        setTimeout(nextQuestion, 1000);
+                    } else {
+                        optionElement.classList.add("incorrect");
+                        iconImg.style.display = "inline";  // Mostra ícone de erro
+                        feedbackMessage.textContent = `Você errou: ${explanation}`;
+                        setTimeout(restartQuiz, 3000);
+                    }
+                };
+
+                quizContainer.appendChild(optionElement);
+            });
+        }
+
+        function updateProgress() {
+            const progressPercentage = ((currentQuestionIndex + 1) / questions.length) * 100;
+            progressFill.style.width = `${progressPercentage}%`;
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                feedbackMessage.textContent = "";
+                quizContainer.innerHTML = "<h2>Parabéns, você completou o quiz!</h2>";
+                progressFill.style.width = "100%";
+            }
+        }
+
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            progressFill.style.width = "0%";
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+</body>
+</html>
