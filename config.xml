@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.cordova.hellocordova" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Genects</name>
-    <description>Sample Apache Cordova App</description>
+<widget id="com.meuappgenetics" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Genetics</name>
+    <description>Aplicativo de ensino</description>
     <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         Apache Cordova Team
     </author>
@@ -19,5 +19,21 @@
         <allow-navigation href="http://*/*" />
         <allow-navigation href="https://*/*" />
         <preference name="android-targetSdkVersion" value="30" />
+        <icon src="res/icon/android/icone.png" density="ldpi" />
+        <icon src="res/icon/android/icone.png" density="mdpi" />
+        <icon src="res/icon/android/icone.png" density="hdpi" />
+        <icon src="res/icon/android/icone.png" density="xhdpi" />
+        <icon src="res/icon/android/icone.png" density="xxhdpi" />
+        <icon src="res/icon/android/icone.png" density="xxxhdpi" />
+
+        <!-- Configurações de splash screen -->
+      <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="FadeSplashScreen" value="true" />
+    <preference name="SplashScreenBackgroundColor" value="#FFFFFF"/>
+    <preference name="FadeSplashScreenDuration" value="500" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/splash/icone.png" />
     </platform>
 </widget>
